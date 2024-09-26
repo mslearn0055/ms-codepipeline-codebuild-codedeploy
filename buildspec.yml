@@ -1,34 +1,42 @@
-version: 0.2
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-phases:
-  install:
-    runtime-versions:
-      java: corretto11  # Specify Java version
-    commands:
-      - echo Installing Maven
-      - apt-get update
-      - apt-get install -y maven
+    <groupId>com.example</groupId>
+    <artifactId>demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
-  pre_build:
-    commands:
-      - echo Clean and install dependencies
-      - mvn clean install
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.4</version>
+        <relativePath /> <!-- lookup parent from repository -->
+    </parent>
 
-  build:
-    commands:
-      - echo Building the Java application
-      - mvn package -DskipTests
+    <properties>
+        <java.version>11</java.version>
+    </properties>
 
-  post_build:
-    commands:
-      - echo Build completed. Preparing for deployment.
-      - ls target/
+    <dependencies>
+        <!-- Spring Boot Web Dependency -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Optional: Add any additional dependencies you may need here -->
+    </dependencies>
 
-artifacts:
-  files:
-    - target/demo-1.0-SNAPSHOT.jar
-  discard-paths: yes
-
-cache:
-  paths:
-    - '/root/.m2/**/*'  # Cache Maven dependencies for faster builds
+    <build>
+        <plugins>
+            <!-- Package the application as an executable JAR -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.example.demo.DemoApplication</mainClass> <!-- Change this to your actual main class -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
