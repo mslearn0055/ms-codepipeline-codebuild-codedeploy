@@ -3,66 +3,39 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Project Coordinates -->
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!-- Spring Boot Parent Dependency -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.4</version>
-        <relativePath/> <!-- Lookup parent from repository -->
+        <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
     <properties>
-        <!-- Java Version -->
         <java.version>11</java.version>
     </properties>
 
-    <!-- Dependencies -->
     <dependencies>
         <!-- Spring Boot Web Dependency -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!-- Spring Boot DevTools (Optional for Development) -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- Testing Dependencies -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
-    <!-- Build Configuration -->
     <build>
         <plugins>
-            <!-- Spring Boot Maven Plugin -->
+            <!-- Spring Boot Plugin for Packaging -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <!-- Specify the Main Class -->
-                    <mainClass>com.example.demo.DemoApplication</mainClass>
+                    <mainClass>com.example.demo.DemoApplication</mainClass> <!-- Ensure this matches your actual class -->
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <!-- Spring Boot Specific Properties -->
-    <properties>
-        <spring-boot.version>2.5.4</spring-boot.version>
-        <java.version>11</java.version>
-    </properties>
 </project>
