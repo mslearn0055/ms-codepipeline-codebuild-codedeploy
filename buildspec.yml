@@ -2,21 +2,27 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      java: corretto11
     commands:
-      - echo Installing OpenJDK 11...
+      - echo Installing dependencies...
       - apt-get update
-      - apt-get install -y openjdk-11-jdk  # Or the steps to install Amazon Corretto as mentioned above
+      - apt-get install -y maven
+
   pre_build:
     commands:
-      - echo Pre-build phase started
+      - echo Cleaning Maven project...
+      - mvn clean
+
   build:
     commands:
-      - echo Build phase started
-      - mvn clean install
+      - echo Building Maven project...
+      - mvn install
+
   post_build:
     commands:
       - echo Build completed on `date`
 
 artifacts:
   files:
-    - target/demo-1.0-SNAPSHOT.jar  # Adjust this if your artifact name is different
+    - target/demo-1.0-SNAPSHOT.jar
