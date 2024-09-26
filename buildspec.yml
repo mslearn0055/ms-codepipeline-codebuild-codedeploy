@@ -1,0 +1,34 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11  # Specify Java version
+    commands:
+      - echo Installing Maven
+      - apt-get update
+      - apt-get install -y maven
+
+  pre_build:
+    commands:
+      - echo Clean and install dependencies
+      - mvn clean install
+
+  build:
+    commands:
+      - echo Building the Java application
+      - mvn package -DskipTests
+
+  post_build:
+    commands:
+      - echo Build completed. Preparing for deployment.
+      - ls target/
+
+artifacts:
+  files:
+    - target/demo-1.0-SNAPSHOT.jar
+  discard-paths: yes
+
+cache:
+  paths:
+    - '/root/.m2/**/*'  # Cache Maven dependencies for faster builds
