@@ -1,42 +1,22 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+version: 0.2
 
-    <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
-    <version>1.0-SNAPSHOT</version>
+phases:
+  install:
+    runtime-versions:
+      java: openjdk11
+  pre_build:
+    commands:
+      - echo Pre-build phase started
+  build:
+    commands:
+      - echo Build phase started
+      - mvn clean install
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Moving JAR file to the artifacts directory
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.4</version>
-        <relativePath /> <!-- lookup parent from repository -->
-    </parent>
-
-    <properties>
-        <java.version>11</java.version>
-    </properties>
-
-    <dependencies>
-        <!-- Spring Boot Web Dependency -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!-- Optional: Add any additional dependencies you may need here -->
-    </dependencies>
-
-    <build>
-        <plugins>
-            <!-- Package the application as an executable JAR -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.example.demo.DemoApplication</mainClass> <!-- Change this to your actual main class -->
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-</project>
+artifacts:
+  files:
+    - target/demo-1.0-SNAPSHOT.jar  # Adjust this if your artifact name is different
+  discard-paths: yes  # Optional: discard paths to create a flatter artifact structure
