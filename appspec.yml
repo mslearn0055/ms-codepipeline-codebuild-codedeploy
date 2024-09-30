@@ -1,26 +1,28 @@
 version: 0.0
 os: linux
+
 files:
-  - source: /
-    destination: /home/ubuntu/
+  - source: /Scripts/
+    destination: /home/ubuntu/Scripts/
 
 hooks:
   BeforeInstall:
-    - location: Scripts/application_stop.sh
+    - location: /home/ubuntu/Scripts/application_stop.sh
       timeout: 300
       runas: root
 
   AfterInstall:
-    - location: Scripts/application_start.sh
+    - location: /home/ubuntu/Scripts/application_start.sh
       timeout: 300
       runas: ubuntu
 
   ApplicationStop:
-    - location: Scripts/application_stop.sh
+    - location: /home/ubuntu/Scripts/application_stop.sh
       timeout: 300
       runas: ubuntu
 
   ValidateService:
-    - location: Scripts/validate_service.sh
+    - location: /home/ubuntu/Scripts/validate_service.sh
       timeout: 300
       runas: ubuntu
+
