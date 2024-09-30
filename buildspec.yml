@@ -25,4 +25,8 @@ phases:
 
 artifacts:
   files:
-    - target/demo-1.0-SNAPSHOT.jar
+    - target/demo-1.0-SNAPSHOT.jar  # Include the JAR artifact
+    - appspec.yaml                  # Include the appspec.yaml file
+    - '**/*'                        # Include all files from the source repo
+
+  discard-paths: yes   # Optional: This will ensure all files are placed in the root directory without subfolder structure
