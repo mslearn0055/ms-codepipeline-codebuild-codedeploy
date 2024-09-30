@@ -8,7 +8,7 @@ hooks:
   BeforeInstall:
     - location: Scripts/application_stop.sh
       timeout: 300
-      runas: ubuntu
+      runas: root
 
   AfterInstall:
     - location: Scripts/application_start.sh
