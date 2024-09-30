@@ -24,4 +24,4 @@ hooks:
     - location: Scripts/validate_service.sh
       timeout: 300
       runas: ubuntu
-#echo
+#echo.
