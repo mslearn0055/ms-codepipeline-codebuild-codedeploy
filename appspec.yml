@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: target/demo-1.0-SNAPSHOT.jar
+  - source: /
     destination: /home/ubuntu/app/
 
 hooks:
