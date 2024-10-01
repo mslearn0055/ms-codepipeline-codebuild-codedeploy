@@ -3,7 +3,7 @@ os: linux
 
 files:
   - source: /Scripts
-    destination: /home/ubuntu/myapp
+    destination: /home/ubuntu/Scripts   # Ensure scripts are placed in this directory
 
 hooks:
   BeforeInstall:
@@ -25,4 +25,3 @@ hooks:
     - location: /home/ubuntu/Scripts/validate_service.sh
       timeout: 300
       runas: ubuntu
-
