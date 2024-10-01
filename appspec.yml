@@ -3,22 +3,22 @@ os: linux
 
 files:
   - source: /          # Assuming the built JAR is in the 'target' folder after Maven build
-    destination: /opt/codedeploy-agent/deployment-root/.../deployment-archive/home/ubuntu/Script       # Deploy the JAR to the application directory
+    destination: /opt/codedeploy-agent/deployment-root/.../deployment-archive/home/ubuntu/Scripts      # Deploy the JAR to the application directory
     # Destination for lifecycle scripts
 
 hooks:
   BeforeInstall:
-    - location: /home/ubuntu/Script/application_stop.sh
+    - location: /home/ubuntu/Scripts/application_stop.sh
       timeout: 300
       runas: root
 
   AfterInstall:
-    - location: /home/ubuntu/Script/application_start.sh
+    - location: /home/ubuntu/Scripts/application_start.sh
       timeout: 300
       runas: ubuntu
 
   ApplicationStop:
-    - location: /home/ubuntu/Script/application_stop.sh
+    - location: /home/ubuntu/Scripts/application_stop.sh
       timeout: 300
       runas: ubuntu
 
