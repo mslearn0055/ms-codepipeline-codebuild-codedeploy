@@ -2,26 +2,29 @@ version: 0.0
 os: linux
 
 files:
-  - source: /
-    destination: /home/ubuntu/Scripts   # Ensure scripts are placed in this directory
+  - source: /target/myapp.jar              # Assuming the built JAR is in the 'target' folder after Maven build
+    destination: /home/ubuntu/myapp        # Deploy the JAR to the application directory
+
+  - source: /Script                        # Assuming the 'Script' folder contains the lifecycle scripts
+    destination: /home/ubuntu/Script       # Destination for lifecycle scripts
 
 hooks:
   BeforeInstall:
-    - location: /home/ubuntu/Scripts/application_stop.sh
+    - location: /home/ubuntu/Script/application_stop.sh
       timeout: 300
       runas: root
 
   AfterInstall:
-    - location: /home/ubuntu/Scripts/application_start.sh
+    - location: /home/ubuntu/Script/application_start.sh
       timeout: 300
       runas: ubuntu
 
   ApplicationStop:
-    - location: /home/ubuntu/Scripts/application_stop.sh
+    - location: /home/ubuntu/Script/application_stop.sh
       timeout: 300
       runas: ubuntu
 
   ValidateService:
-    - location: /home/ubuntu/Scripts/validate_service.sh
+    - location: /home/ubuntu/Script/validate_service.sh
       timeout: 300
       runas: ubuntu
