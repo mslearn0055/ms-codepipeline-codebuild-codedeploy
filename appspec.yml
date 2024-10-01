@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 
 files:
-  - source: /Scripts
+  - source: /
     destination: /home/ubuntu/Scripts   # Ensure scripts are placed in this directory
 
 hooks:
