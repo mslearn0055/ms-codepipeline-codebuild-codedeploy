@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 
 files:
-  - source: /target/myapp.jar              # Assuming the built JAR is in the 'target' folder after Maven build
+  - source: /ms0055            # Assuming the built JAR is in the 'target' folder after Maven build
     destination: /home/ubuntu/myapp        # Deploy the JAR to the application directory
 
   - source: /Script                        # Assuming the 'Script' folder contains the lifecycle scripts
