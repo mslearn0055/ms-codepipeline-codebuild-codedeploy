@@ -2,8 +2,8 @@ version: 0.0
 os: linux
 
 files:
-  - source: /ms0055            # Assuming the built JAR is in the 'target' folder after Maven build
-    destination: /home/ubuntu/myapp        # Deploy the JAR to the application directory
+  - source: /          # Assuming the built JAR is in the 'target' folder after Maven build
+    destination: /opt/codedeploy-agent/deployment-root/.../deployment-archive/home/ubuntu/Scripts       # Deploy the JAR to the application directory
 
   - source: /Script                        # Assuming the 'Script' folder contains the lifecycle scripts
     destination: /home/ubuntu/Script       # Destination for lifecycle scripts
